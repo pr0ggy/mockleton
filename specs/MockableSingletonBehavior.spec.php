@@ -44,12 +44,12 @@ describe('MockableSingletonBehavior trait', function () {
     });
 
 
-    describe('::registerDefaultSingleton(...$singleton_constructor_args)', function () {
+    describe('::createAndRegisterSingletonWithConstructionArgs(...$singleton_constructor_args)', function () {
 
         it('should throw RuntimeException if an instance is already registered', function () {
             try {
-                MockableNullableInstanceSingleton::registerDefaultSingleton();
-                MockableNullableInstanceSingleton::registerDefaultSingleton();
+                MockableNullableInstanceSingleton::createAndRegisterSingletonWithConstructionArgs();
+                MockableNullableInstanceSingleton::createAndRegisterSingletonWithConstructionArgs();
                 throw new Exception('Failed to throw exception on attempted instance multi-registration');
             } catch (RuntimeException $e) {
                 assert($e->getMessage() === 'Singleton instance already registered');
@@ -57,12 +57,12 @@ describe('MockableSingletonBehavior trait', function () {
         });
 
         it('should create an instance of the same type', function () {
-            MockableNullableInstanceSingleton::registerDefaultSingleton();
+            MockableNullableInstanceSingleton::createAndRegisterSingletonWithConstructionArgs();
             assert(MockableNullableInstanceSingleton::getInstance() instanceof MockableNullableInstanceSingleton);
         });
 
         it('should pass given arguments to constructor', function () {
-            MockableSingletonConstructorArgumentSpy::registerDefaultSingleton('foo', 'bar', true);
+            MockableSingletonConstructorArgumentSpy::createAndRegisterSingletonWithConstructionArgs('foo', 'bar', true);
             $instance = MockableSingletonConstructorArgumentSpy::getInstance();
             assert($instance->didReceiveConstructionArgs('foo', 'bar', true));
         });
@@ -77,10 +77,27 @@ describe('MockableSingletonBehavior trait', function () {
                 $instance = MockableNullableInstanceSingleton::getInstance();
                 throw new Exception('Failed to throw exception when attempting to fetch a null instance');
             } catch (RuntimeException $e) {
-                assert($e->getMessage() === 'Singleton instance not yet registered');
+                assert($e->getMessage() === 'No singleton instance registered');
             }
         });
 
+    });
+
+
+    describe('::unregisterInstance()', function() {
+        it('should unset the singleton instance', function() {
+            MockableNullableInstanceSingleton::createAndRegisterSingletonWithConstructionArgs();
+            $instance = MockableNullableInstanceSingleton::getInstance();
+            assert(isset($instance));
+
+            MockableNullableInstanceSingleton::unregisterInstance();
+            try {
+                $instance = MockableNullableInstanceSingleton::getInstance();
+                throw new Exception('Failed to unset singleton instance');
+            } catch (RuntimeException $e) {
+                assert($e->getMessage() === 'No singleton instance registered');
+            }
+        });
     });
 
 });

@@ -48,7 +48,7 @@ trait MockableSingletonBehavior
      * @param  variadic $singleton_constructor_args arguments to be passed to the created instance constructor
      * @throws \RuntimeException if an instance has already been registered
      */
-    public static function registerDefaultSingleton(...$singleton_constructor_args)
+    public static function createAndRegisterSingletonWithConstructionArgs(...$singleton_constructor_args)
     {
         self::verifyInstanceNotYetRegistered();
         self::$instance = new static(...$singleton_constructor_args);
@@ -79,8 +79,16 @@ trait MockableSingletonBehavior
     protected static function verifyInstanceHasBeenRegistered()
     {
         if (isset(self::$instance) === false) {
-            throw new \RuntimeException('Singleton instance not yet registered');
+            throw new \RuntimeException('No singleton instance registered');
         }
+    }
+
+    /**
+     * Unsets the singleton instance
+     */
+    public function unregisterInstance()
+    {
+        self::$instance = null;
     }
 
     /*
