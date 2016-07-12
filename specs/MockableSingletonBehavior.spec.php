@@ -10,7 +10,7 @@ use Mockleton\Test\Implementations\MockableNullableInstanceSingleton;
 describe('MockableSingletonBehavior trait', function () {
 
     afterEach(function () {
-        MockableNullableInstanceSingleton::unsetInstance();
+        MockableNullableInstanceSingleton::unregisterSingletonInstance();
     });
 
     describe('::registerSingletonInstance($instance)', function () {
@@ -84,14 +84,14 @@ describe('MockableSingletonBehavior trait', function () {
     });
 
 
-    describe('::unregisterInstance()', function() {
+    describe('::unregisterSingletonInstance()', function() {
 
         it('should unset the singleton instance', function() {
             MockableNullableInstanceSingleton::createAndRegisterSingletonWithConstructionArgs();
             $instance = MockableNullableInstanceSingleton::getInstance();
             assert(isset($instance));
 
-            MockableNullableInstanceSingleton::unregisterInstance();
+            MockableNullableInstanceSingleton::unregisterSingletonInstance();
             try {
                 $instance = MockableNullableInstanceSingleton::getInstance();
                 throw new Exception('Failed to unset singleton instance');

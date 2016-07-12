@@ -86,7 +86,7 @@ trait MockableSingletonBehavior
     /**
      * Unsets the singleton instance
      */
-    public function unregisterInstance()
+    public function unregisterSingletonInstance()
     {
         self::$instance = null;
     }
