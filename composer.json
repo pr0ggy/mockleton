@@ -1,5 +1,5 @@
 {
-    "name": "pr0ggy/Singlemock",
+    "name": "pr0ggy/mockleton",
     "description": "A mockable singleton behavior trait",
     "keywords": ["TDD", "testing", "singleton"],
     "license": "MIT",
@@ -16,12 +16,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Singlemock\\": "src/"
+            "Mockleton\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Singlemock\\Test\\": "specs/"
+            "Mockleton\\Test\\": "specs/"
         }
     }
 }

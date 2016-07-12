@@ -1,11 +1,11 @@
 <?php
 
-namespace Singlemock;
+namespace Mockleton;
 
 /**
  * Simple class definition example which uses the MockableSingletonBehavior trait
  *
- * @package Singlemock
+ * @package Mockleton
  */
 final class MockableSingleton
 {

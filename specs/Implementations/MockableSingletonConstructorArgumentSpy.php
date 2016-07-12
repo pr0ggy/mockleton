@@ -1,13 +1,13 @@
 <?php
 
-namespace Singlemock\Test\Implementations;
+namespace Mockleton\Test\Implementations;
 
-use Singlemock\MockableSingletonBehavior;
+use Mockleton\MockableSingletonBehavior;
 
 /**
  * Testing double which allows inspection of arguments passed to the constructor
  *
- * @package  Singlemock\Test\Implementations
+ * @package  Mockleton\Test\Implementations
  */
 class MockableSingletonConstructorArgumentSpy
 {

@@ -1,3 +1,3 @@
-# Singlemock: A mockable singleton behavior trait
+# Mockleton: A mockable singleton behavior trait
 
 **TODO: ReadMe**

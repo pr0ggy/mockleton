@@ -1,13 +1,13 @@
 <?php
 
-namespace Singlemock;
+namespace Mockleton;
 
 /**
  * Trait which defines singleton behavior which allows an instance to be created and registered as
  * the singleton instance.  Also offers a pure private-constructor singleton approach which allows
  * constructor arguments to be passed in.
  *
- * @package  Singlemock
+ * @package  Mockleton
  */
 trait MockableSingletonBehavior
 {

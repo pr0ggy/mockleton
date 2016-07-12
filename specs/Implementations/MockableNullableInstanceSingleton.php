@@ -1,14 +1,14 @@
 <?php
 
-namespace Singlemock\Test\Implementations;
+namespace Mockleton\Test\Implementations;
 
-use Singlemock\MockableSingletonBehavior;
+use Mockleton\MockableSingletonBehavior;
 
 /**
  * Simple testing implementation which allows the singleton instance to
  * be unset
  *
- * @package  Singlemock\Test\Implementations;
+ * @package  Mockleton\Test\Implementations;
  */
 class MockableNullableInstanceSingleton
 {

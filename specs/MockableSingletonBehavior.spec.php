@@ -4,8 +4,8 @@
  * Testing is accomplished using the simple MockableSingleton implementation defined in src/
  */
 
-use Singlemock\Test\Implementations\MockableSingletonConstructorArgumentSpy;
-use Singlemock\Test\Implementations\MockableNullableInstanceSingleton;
+use Mockleton\Test\Implementations\MockableSingletonConstructorArgumentSpy;
+use Mockleton\Test\Implementations\MockableNullableInstanceSingleton;
 
 describe('MockableSingletonBehavior trait', function () {
 
