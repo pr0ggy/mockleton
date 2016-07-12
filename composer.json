@@ -1,6 +1,6 @@
 {
-    "name": "pr0ggy/Singlemock",
-    "description": "A mockable singleton behavior trait",
+    "name": "pr0ggy/singlemock",
+    "description": "A mockable singleton behavior PHP trait",
     "keywords": ["TDD", "testing", "singleton"],
     "license": "MIT",
     "authors": [
