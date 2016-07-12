@@ -85,6 +85,7 @@ describe('MockableSingletonBehavior trait', function () {
 
 
     describe('::unregisterInstance()', function() {
+
         it('should unset the singleton instance', function() {
             MockableNullableInstanceSingleton::createAndRegisterSingletonWithConstructionArgs();
             $instance = MockableNullableInstanceSingleton::getInstance();
@@ -98,6 +99,7 @@ describe('MockableSingletonBehavior trait', function () {
                 assert($e->getMessage() === 'No singleton instance registered');
             }
         });
+
     });
 
 });
