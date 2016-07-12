@@ -21,24 +21,28 @@ describe('MockableSingletonBehavior trait', function () {
             assert(MockableNullableInstanceSingleton::getInstance() === $instance);
         });
 
-        it('should throw RuntimeException if instance type mismatch', function () {
+        it('should throw TypeError if instance type mismatch', function () {
             try {
                 $instance = new stdClass();
                 MockableNullableInstanceSingleton::registerSingletonInstance($instance);
-                throw new Exception('Failed to throw exception on instance type mismatch');
-            } catch (RuntimeException $e) {
+            } catch (TypeError $e) {
                 assert($e->getMessage() === 'Attempting to register a singleton instance which is not of the same type');
+                return;
             }
+
+            throw new Exception('Failed to throw exception on instance type mismatch');
         });
 
         it('should throw RuntimeException if an instance is already registered', function () {
             try {
                 MockableNullableInstanceSingleton::registerSingletonInstance(new MockableNullableInstanceSingleton());
                 MockableNullableInstanceSingleton::registerSingletonInstance(new MockableNullableInstanceSingleton());
-                throw new Exception('Failed to throw exception on attempted instance multi-registration');
             } catch (RuntimeException $e) {
                 assert($e->getMessage() === 'Singleton instance already registered');
+                return;
             }
+
+            throw new Exception('Failed to throw exception on attempted instance multi-registration');
         });
 
     });
@@ -50,10 +54,12 @@ describe('MockableSingletonBehavior trait', function () {
             try {
                 MockableNullableInstanceSingleton::createAndRegisterSingletonWithConstructionArgs();
                 MockableNullableInstanceSingleton::createAndRegisterSingletonWithConstructionArgs();
-                throw new Exception('Failed to throw exception on attempted instance multi-registration');
             } catch (RuntimeException $e) {
                 assert($e->getMessage() === 'Singleton instance already registered');
+                return;
             }
+
+            throw new Exception('Failed to throw exception on attempted instance multi-registration');
         });
 
         it('should create an instance of the same type', function () {
@@ -75,10 +81,12 @@ describe('MockableSingletonBehavior trait', function () {
         it('should throw RuntimeException if no instance registered', function () {
             try {
                 $instance = MockableNullableInstanceSingleton::getInstance();
-                throw new Exception('Failed to throw exception when attempting to fetch a null instance');
             } catch (RuntimeException $e) {
                 assert($e->getMessage() === 'No singleton instance registered');
+                return;
             }
+
+            throw new Exception('Failed to throw exception when attempting to fetch a null instance');
         });
 
     });
@@ -94,10 +102,12 @@ describe('MockableSingletonBehavior trait', function () {
             MockableNullableInstanceSingleton::unregisterSingletonInstance();
             try {
                 $instance = MockableNullableInstanceSingleton::getInstance();
-                throw new Exception('Failed to unset singleton instance');
             } catch (RuntimeException $e) {
                 assert($e->getMessage() === 'No singleton instance registered');
+                return;
             }
+
+            throw new Exception('Failed to unset singleton instance');
         });
 
     });

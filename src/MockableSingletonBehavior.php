@@ -37,7 +37,7 @@ trait MockableSingletonBehavior
     protected static function verifyInstanceType($instance)
     {
         if (($instance instanceof static) === false) {
-            throw new \RuntimeException('Attempting to register a singleton instance which is not of the same type');
+            throw new \TypeError('Attempting to register a singleton instance which is not of the same type');
         }
     }
 
