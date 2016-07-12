@@ -59,8 +59,7 @@ trait MockableSingletonBehavior
      */
     protected static function verifyInstanceNotYetRegistered()
     {
-        if (isset(self::$instance))
-        {
+        if (isset(self::$instance)) {
             throw new \RuntimeException('Singleton instance already registered');
         }
     }
@@ -100,5 +99,4 @@ trait MockableSingletonBehavior
     private function __wakeup()
     {
     }
-
 }
