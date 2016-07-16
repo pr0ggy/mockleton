@@ -20,7 +20,8 @@ trait MockableSingletonBehavior
      * Registers a specific instance of the class to use as the singleton instance
      *
      * @param  static $instance  the instance to register as the singleton instance
-     * @throws \RuntimeException if the given instance argument does not match the type of the context object
+     * @throws \TypeError if the given instance argument does not match the type of the context object
+     * @throws \RuntimeException if an instance has already been registered
      */
     public static function registerSingletonInstance($instance)
     {
@@ -31,8 +32,7 @@ trait MockableSingletonBehavior
 
     /**
      * @param  mixed $instance the instance to verify as being the same type as the context object
-     * @throws \RuntimeException if the given instance is not the same type as the context object
-     * @throws \RuntimeException if an instance has already been registered
+     * @throws \TypeError if the given instance argument does not match the type of the context object
      */
     protected static function verifyInstanceType($instance)
     {
