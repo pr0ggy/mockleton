@@ -16,7 +16,7 @@ How can we verify that the example function above fetches a connection from the 
 
 This trait was created to alleviate this issue by exposing a few new methods that achieve the Singleton goal of restricting instantiation to a single instance while allowing the instance to be swapped out for a testing double.  Consider this simple example using the `describe-it` syntax of testing frameworks such as [Peridot](http://peridot-php.github.io/) and [pho](https://github.com/danielstjules/pho):
 ```php
-describe('executeQuery($query, $parameteres)', function () {
+describe('executeQuery($query, $parameters)', function () {
 	$this->original_pool_instance = DBConnectionPool::getInstance();
 	$this->connection_pool_double = createConnectionPoolTestDouble();
 
