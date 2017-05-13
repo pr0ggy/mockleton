@@ -1,4 +1,4 @@
-#Mockleton: A mockable singleton behavior trait
+# Mockleton: A mockable singleton behavior trait
 
 [The Singleton design pattern](https://en.wikipedia.org/wiki/Singleton_pattern) has its uses, but is often leveraged in client code in ways that make unit testing difficult.  Consider an ad-hoc DB querying example:
 ```php
